@@ -35,4 +35,22 @@ public class GameManager : MonoBehaviour
     public void Hit(Brick brick){
         this.score +=  brick.points;
     }
+
+    private void ResetLevel() {
+
+    }
+
+    private void GameOver() {
+        SceneManager.LoadScene("GameOver");
+    }
+
+    public void Miss() {
+        this.lives--;
+
+        if (this.lives > 0){
+            ResetLevel();
+        } else {
+            GameOver();
+        }
+    }
 }

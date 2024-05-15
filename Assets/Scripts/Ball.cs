@@ -5,7 +5,7 @@ public class Ball : MonoBehaviour
 {
     public new Rigidbody2D rigidbody { get; private set; }
 
-    public float speed = 500f;
+    public float speed = 10f;
 
     private void Awake()
     {
@@ -16,6 +16,9 @@ public class Ball : MonoBehaviour
         Invoke(nameof(SetRandomTrajectory),1f);
     }
 
+    private void FixedUpdate() {
+        rigidbody.velocity = rigidbody.velocity.normalized * speed;
+    }
     private void SetRandomTrajectory()
     {
 

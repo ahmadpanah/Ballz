@@ -5,7 +5,7 @@ using UnityEngine;
 public class Brick : MonoBehaviour
 {
     public SpriteRenderer spriteReneder {get; private set;}
-    public Sprite[] states;
+    public Sprite[] states = new Sprite[0];
     public int health {get; private set;}
     public bool unbreakable;
 
@@ -17,8 +17,8 @@ public class Brick : MonoBehaviour
 
     private void Start() {
         if (!this.unbreakable) {
-            this.health = this.states.Length;
-            this.spriteReneder.sprite = this.states[this.health];
+            health = states.Length;
+            this.spriteReneder.sprite = this.states[this.health - 1];
         }
     }
 
@@ -34,7 +34,7 @@ public class Brick : MonoBehaviour
             return;
         }
 
-        this.health--;
+        health--;
         if (this.health <= 0) {
             this.gameObject.SetActive(false);
         } else {
